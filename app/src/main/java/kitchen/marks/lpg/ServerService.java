@@ -19,7 +19,7 @@
  *
  */
 
-package net.basov.lws;
+package kitchen.marks.lpg;
 
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -50,8 +50,6 @@ import java.net.NetworkInterface;
 import java.net.SocketException;
 import java.util.Enumeration;
 
-import static net.basov.lws.Constants.*;
-
 public class ServerService extends Service {
     private NotificationManager mNM;
     private Server server;
@@ -65,7 +63,7 @@ public class ServerService extends Service {
         
         if (intent != null
             && intent.getAction() != null
-            && intent.getAction().equals(ACTION_STOP)
+            && intent.getAction().equals(Constants.ACTION_STOP)
             ) stopServer();
         
         return super.onStartCommand(intent, flags, startId);
@@ -177,8 +175,8 @@ public class ServerService extends Service {
 
         } catch (Exception e) {
             isRunning = false;
-            mNM.cancel(NOTIFICATION_ID);
-            Log.e(LOG_TAG, e.getMessage()+ "(from ServerService.startServer())");
+            mNM.cancel(Constants.NOTIFICATION_ID);
+            Log.e(Constants.LOG_TAG, e.getMessage()+ "(from ServerService.startServer())");
             StartActivity.putToLogScreen("E: " + e.getMessage(), gHandler);
         }
     }
@@ -193,7 +191,7 @@ public class ServerService extends Service {
     public void stopServer() {
         isRunning = false;
         ipAddress = "";
-        mNM.cancel(NOTIFICATION_ID);       
+        mNM.cancel(Constants.NOTIFICATION_ID);
         try {
             //TODO: Exception when unregister receiver which is new...
             if (mReceiver != null) {
@@ -205,7 +203,7 @@ public class ServerService extends Service {
                     "E: Receiver unregister error again :( (stopServer())",
                     gHandler
             );
-            Log.e(LOG_TAG, e.getMessage() + "on ServerService.stopServer()");
+            Log.e(Constants.LOG_TAG, e.getMessage() + "on ServerService.stopServer()");
         }
         if (null != server) {
             server.stopServer();
@@ -245,13 +243,13 @@ public class ServerService extends Service {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {              
                 notificationBuilder.setChannelId(this.getString(R.string.notif_ch_id));
             }        
-            startForeground(NOTIFICATION_ID, notificationBuilder.build());
+            startForeground(Constants.NOTIFICATION_ID, notificationBuilder.build());
         }
     }
 
     @Override
     public IBinder onBind(Intent intent) {
-        if (!isRunning) mNM.cancel(NOTIFICATION_ID);
+        if (!isRunning) mNM.cancel(Constants.NOTIFICATION_ID);
         return mBinder;
     }
 
@@ -322,7 +320,7 @@ public class ServerService extends Service {
             }
 
         } catch (SocketException e) {
-            Log.e(LOG_TAG, e.getMessage());
+            Log.e(Constants.LOG_TAG, e.getMessage());
         }
         return ip;
     }

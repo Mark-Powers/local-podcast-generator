@@ -17,7 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-package net.basov.lws;
+package kitchen.marks.lpg;
 
 /**
  * Created by mvb on 6/22/17.
@@ -40,7 +40,6 @@ import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 
-import static net.basov.lws.Constants.*;
 
 public class PreferencesActivity extends PreferenceActivity implements
         SharedPreferences.OnSharedPreferenceChangeListener {
@@ -88,7 +87,7 @@ public class PreferencesActivity extends PreferenceActivity implements
                     Intent intent = new Intent("org.openintents.action.PICK_DIRECTORY");
                     intent.putExtra("org.openintents.extra.BUTTON_TEXT", "Select document root");
                     try {
-                        startActivityForResult(intent, DIRECTORY_REQUEST);
+                        startActivityForResult(intent, Constants.DIRECTORY_REQUEST);
                     } catch (ActivityNotFoundException e) {
                         Toast.makeText(PreferencesActivity.this,
                                 "OI File Manager not installed. Install or disable using.",
@@ -114,7 +113,7 @@ public class PreferencesActivity extends PreferenceActivity implements
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == DIRECTORY_REQUEST && data != null) {
+        if (requestCode == Constants.DIRECTORY_REQUEST && data != null) {
             String newValue = null;
             Uri uri = data.getData();
             if (uri != null) {

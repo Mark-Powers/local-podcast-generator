@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">lWS</string>
-    <string name="hello">lightweight Web Server (lWS)</string>
+    <string name="app_name">LPG</string>
+    <string name="hello">Local Podcat Generator</string>
 
     <!-- Default document root index
     %1$d    default document root path

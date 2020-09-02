@@ -19,7 +19,7 @@
  *
  */
 
-package net.basov.lws;
+package kitchen.marks.lpg;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

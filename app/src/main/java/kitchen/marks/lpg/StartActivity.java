@@ -19,7 +19,7 @@
  *
  */
 
-package net.basov.lws;
+package kitchen.marks.lpg;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -52,8 +52,6 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
-
-import static net.basov.lws.Constants.*;
 
 public class StartActivity extends Activity {
     private static int prevMsgCount;
@@ -194,7 +192,7 @@ public class StartActivity extends Activity {
                     ) {
                         requestPermissions(
                                 new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
-                                GRANT_WRITE_EXTERNAL_STORAGE
+                                Constants.GRANT_WRITE_EXTERNAL_STORAGE
                         );
                     }
                 }
@@ -435,7 +433,7 @@ public class StartActivity extends Activity {
             }
         } catch (Exception e) {
             log("E: Error creating HTML index file.");
-            Log.e(LOG_TAG,e.getMessage());
+            Log.e(Constants.LOG_TAG,e.getMessage());
         }
     }
 

@@ -19,7 +19,7 @@
  *
  */
 
-package net.basov.lws;
+package kitchen.marks.lpg;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -30,8 +30,6 @@ import java.util.LinkedList;
 import android.content.Context;
 import android.os.Handler;
 import android.util.Log;
-
-import static net.basov.lws.Constants.*;
 
 class Server extends Thread {
     private ServerSocket listener = null;
@@ -68,7 +66,7 @@ class Server extends Thread {
                 // This lead repeating message 'Socket closed' message many (more then 100) times
                 // but they suppressed by '... previous string repeated x times' logging functionality.
                 StartActivity.putToLogScreen("I: " + e.getMessage(), mHandler);
-                Log.e(LOG_TAG, e.getMessage());
+                Log.e(Constants.LOG_TAG, e.getMessage());
             }
         }
     }

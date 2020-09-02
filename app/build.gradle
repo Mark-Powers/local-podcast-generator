@@ -7,14 +7,14 @@ android {
 
     applicationVariants.all { variant ->
         variant.outputs.all { output ->
-            outputFileName = "lWS.${variant.versionName}.apk"
+            outputFileName = "lpg.${variant.versionName}.apk"
             if (variant.getBuildType().isMinifyEnabled()) {
                 variant.assemble.doLast{
                     copy {
                         from variant.mappingFile
                         into output.outputFile.parent 
                         rename { String fileName ->
-                            "lWS." + versionName + "_mapping.txt"
+                            "lpg." + versionName + "_mapping.txt"
                         }
                     }
                 }
@@ -30,15 +30,15 @@ android {
 // Keep two lines arround applicationId unchanged to allow use patch for F-Droid build
 
 
-        applicationId "net.basov.lws"
+        applicationId "kitchen.marks.lpg"
 
 
 // End of strings reserved for F-Droid patch
         minSdkVersion 10
         targetSdkVersion 28
 
-        versionCode 70000
-        versionName "07.00.00"
+        versionCode 10000
+        versionName "1.00.00"
     }
 
     buildTypes {
